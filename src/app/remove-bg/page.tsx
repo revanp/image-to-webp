@@ -1,28 +1,28 @@
 "use client";
 
 import { useState } from 'react';
-import ImageDropzone from '@/components/ImageDropzone';
-import ConversionResult from '@/components/ConversionResult';
+import BackgroundRemovalDropzone from '@/components/BackgroundRemovalDropzone';
+import BackgroundRemovalResult from '@/components/BackgroundRemovalResult';
 import Link from 'next/link';
 
-export interface ConvertedImage {
+export interface ProcessedImage {
   name: string;
   originalSize: number;
-  webpSize: number;
-  url: string;
+  processedSize: number;
   originalUrl: string;
+  processedUrl: string;
 }
 
-export default function Home() {
-  const [convertedImages, setConvertedImages] = useState<ConvertedImage[]>([]);
-  const [isConverting, setIsConverting] = useState(false);
+export default function RemoveBackgroundPage() {
+  const [processedImages, setProcessedImages] = useState<ProcessedImage[]>([]);
+  const [isProcessing, setIsProcessing] = useState(false);
 
-  const handleImagesConverted = (images: ConvertedImage[]) => {
-    setConvertedImages(prev => [...prev, ...images]);
+  const handleImagesProcessed = (images: ProcessedImage[]) => {
+    setProcessedImages(prev => [...prev, ...images]);
   };
 
   const handleClearAll = () => {
-    setConvertedImages([]);
+    setProcessedImages([]);
   };
 
   return (
@@ -33,17 +33,17 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0">
             <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
               <h1 className="text-lg sm:text-xl font-medium text-black">
-                Image to WebP Converter
+                Background Removal Tool
               </h1>
               <div className="flex space-x-2 text-sm">
-                <span className="text-black">WebP Converter</span>
-                <span className="text-gray-400">•</span>
                 <Link 
-                  href="/remove-bg" 
+                  href="/" 
                   className="text-gray-600 hover:text-black transition-colors"
                 >
-                  Remove Background
+                  WebP Converter
                 </Link>
+                <span className="text-gray-400">•</span>
+                <span className="text-black">Remove Background</span>
               </div>
             </div>
             <a 
@@ -63,29 +63,29 @@ export default function Home() {
         {/* Hero Section */}
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-black mb-4 sm:mb-6 leading-tight">
-            Convert Images to WebP
+            Remove Background
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
-            Reduce your image file sizes by up to 80% while maintaining quality. 
-            Support for single images and bulk conversion via ZIP files.
+            Remove backgrounds from your images instantly using AI. 
+            Perfect for product photos, portraits, and creative projects.
           </p>
         </div>
 
         {/* Dropzone */}
         <div className="mb-12 sm:mb-16">
-          <ImageDropzone 
-            onImagesConverted={handleImagesConverted}
-            isConverting={isConverting}
-            setIsConverting={setIsConverting}
+          <BackgroundRemovalDropzone 
+            onImagesProcessed={handleImagesProcessed}
+            isProcessing={isProcessing}
+            setIsProcessing={setIsProcessing}
           />
         </div>
 
         {/* Results */}
-        {convertedImages.length > 0 && (
+        {processedImages.length > 0 && (
           <div className="space-y-6 sm:space-y-8">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-2 sm:space-y-0">
               <h3 className="text-xl sm:text-2xl font-medium text-black">
-                Results ({convertedImages.length} {convertedImages.length === 1 ? 'image' : 'images'})
+                Results ({processedImages.length} {processedImages.length === 1 ? 'image' : 'images'})
               </h3>
               <button 
                 className="text-sm text-gray-600 hover:text-black transition-colors border border-gray-300 px-4 py-2 rounded-md hover:border-gray-400 self-start sm:self-auto"
@@ -95,7 +95,7 @@ export default function Home() {
               </button>
             </div>
             
-            <ConversionResult images={convertedImages} />
+            <BackgroundRemovalResult images={processedImages} />
           </div>
         )}
 
@@ -104,21 +104,21 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12">
             <div className="text-center">
               <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg">
-                ⚡
+                🤖
               </div>
-              <h3 className="text-lg font-medium text-black mb-2">Fast Conversion</h3>
+              <h3 className="text-lg font-medium text-black mb-2">AI Powered</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Lightning-fast image processing powered by Sharp.js
+                Advanced machine learning for precise background removal
               </p>
             </div>
             
             <div className="text-center">
               <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg">
-                📦
+                ⚡
               </div>
-              <h3 className="text-lg font-medium text-black mb-2">Bulk Processing</h3>
+              <h3 className="text-lg font-medium text-black mb-2">Instant Results</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Upload ZIP files for batch conversion
+                Process images in seconds, no waiting required
               </p>
             </div>
             
@@ -128,7 +128,7 @@ export default function Home() {
               </div>
               <h3 className="text-lg font-medium text-black mb-2">Privacy First</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                All processing happens in your browser
+                All processing happens locally in your browser
               </p>
             </div>
           </div>
@@ -155,4 +155,4 @@ export default function Home() {
       </footer>
     </div>
   );
-}
+} 

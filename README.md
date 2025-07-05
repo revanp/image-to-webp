@@ -1,14 +1,22 @@
-# 🖼️ Image to WebP Converter
+# 🖼️ Image Tools Suite
 
-A modern, fast, and beautiful web application to convert your images to WebP format. Built with Next.js, TypeScript, and optimized for performance.
+A modern, fast, and beautiful web application for image processing. Convert images to WebP format and remove backgrounds using AI. Built with Next.js, TypeScript, and optimized for performance.
 
 ![Demo](https://img.shields.io/badge/Demo-Live-brightgreen) ![Docker](https://img.shields.io/badge/Docker-Ready-blue) ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ## ✨ Features
 
+### 🔄 WebP Conversion
 - **🚀 Fast Conversion**: Lightning-fast image processing using Sharp.js
 - **📦 Bulk Processing**: Upload ZIP files for batch conversion
 - **💾 Space Saving**: Reduce image sizes by up to 80% while maintaining quality
+
+### ✂️ AI Background Removal
+- **🤖 AI Powered**: Advanced machine learning for precise background removal
+- **⚡ Instant Results**: Process images in seconds using client-side AI
+- **🎯 High Quality**: Professional results for portraits, products, and objects
+
+### 🌟 General Features
 - **🎨 Clean UI**: Minimalist interface with responsive design
 - **📱 Mobile Friendly**: Works perfectly on all devices
 - **🔒 Privacy First**: All processing happens in your browser
@@ -54,10 +62,17 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📋 How to Use
 
+### 🔄 WebP Conversion (`/`)
 1. **Single Images**: Drag & drop individual images or click to browse
 2. **Bulk Upload**: Upload a ZIP file containing multiple images
 3. **Convert**: Watch as your images are converted to WebP format
 4. **Download**: Get individual files or download all as a ZIP
+
+### ✂️ Background Removal (`/remove-bg`)
+1. **Upload Images**: Drag & drop photos or click to browse
+2. **AI Processing**: Watch as AI removes backgrounds automatically
+3. **Preview Results**: See before/after comparison with transparent backgrounds
+4. **Download PNG**: Get high-quality PNG files with transparent backgrounds
 
 ## 🛠️ Tech Stack
 
@@ -66,6 +81,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **Image Processing**: Sharp.js
+- **AI Background Removal**: @imgly/background-removal
 - **File Handling**: react-dropzone + JSZip
 - **Containerization**: Docker with multi-stage builds
 

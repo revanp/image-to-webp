@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@imgly/background-removal": "^1.6.0",
     "@types/jszip": "^3.4.1",
     "jszip": "^3.10.1",
     "next": "15.3.5",
