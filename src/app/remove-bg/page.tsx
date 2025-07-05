@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import BackgroundRemovalDropzone from '@/components/BackgroundRemovalDropzone';
-import BackgroundRemovalResult from '@/components/BackgroundRemovalResult';
+import BackgroundRemovalDropzone from '../../components/BackgroundRemovalDropzone';
+import BackgroundRemovalResult from '../../components/BackgroundRemovalResult';
 import Link from 'next/link';
 
 export interface ProcessedImage {
