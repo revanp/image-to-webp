@@ -1,37 +1,56 @@
 # 🖼️ Image to WebP Converter
 
-A modern, fast, and beautiful web application to convert your images to WebP format. Built with Next.js, TypeScript, and DaisyUI for optimal performance and user experience.
+A modern, fast, and beautiful web application to convert your images to WebP format. Built with Next.js, TypeScript, and optimized for performance.
+
+![Demo](https://img.shields.io/badge/Demo-Live-brightgreen) ![Docker](https://img.shields.io/badge/Docker-Ready-blue) ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ## ✨ Features
 
 - **🚀 Fast Conversion**: Lightning-fast image processing using Sharp.js
 - **📦 Bulk Processing**: Upload ZIP files for batch conversion
 - **💾 Space Saving**: Reduce image sizes by up to 80% while maintaining quality
-- **🎨 Beautiful UI**: Modern interface with black & white theme
-- **📱 Responsive**: Works perfectly on all devices
+- **🎨 Clean UI**: Minimalist interface with responsive design
+- **📱 Mobile Friendly**: Works perfectly on all devices
 - **🔒 Privacy First**: All processing happens in your browser
 - **⬇️ Easy Download**: Download individual files or bulk ZIP
+- **🐳 Docker Ready**: Containerized for easy deployment
 
 ## 🚀 Quick Start
 
-1. **Clone the repository**
-   ```bash
-   git clone <your-repo-url>
-   cd image-to-webp
-   ```
+### Using Docker (Recommended)
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/revanp/image-to-webp.git
+cd image-to-webp
 
-3. **Run the development server**
-   ```bash
-   npm run dev
-   ```
+# Build and run with Docker Compose
+docker-compose up -d
 
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+# Or build and run manually
+docker build -t image-to-webp .
+docker run -p 3000:3000 image-to-webp
+```
+
+### Local Development
+
+```bash
+# Clone the repository
+git clone https://github.com/revanp/image-to-webp.git
+cd image-to-webp
+
+# Install dependencies (using Bun - recommended)
+bun install
+# or with npm
+npm install
+
+# Run the development server
+bun dev
+# or with npm
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📋 How to Use
 
@@ -43,11 +62,12 @@ A modern, fast, and beautiful web application to convert your images to WebP for
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js 15 with App Router
+- **Runtime**: Bun (recommended) or Node.js
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS + DaisyUI
+- **Styling**: Tailwind CSS
 - **Image Processing**: Sharp.js
 - **File Handling**: react-dropzone + JSZip
-- **Deployment**: Ready for Vercel
+- **Containerization**: Docker with multi-stage builds
 
 ## 📁 Supported Formats
 
@@ -61,7 +81,7 @@ A modern, fast, and beautiful web application to convert your images to WebP for
 - ZIP files containing images
 
 **Output format:**
-- WebP with optimized quality and compression
+- WebP with optimized quality (80%) and compression
 
 ## 🎯 Performance
 
@@ -69,6 +89,26 @@ A modern, fast, and beautiful web application to convert your images to WebP for
 - **Compression**: High effort compression for maximum space savings
 - **File Size Limit**: 50MB per image
 - **Batch Processing**: Unlimited images per ZIP file
+- **Runtime**: Optimized with Bun for faster performance
+
+## 🐳 Docker Configuration
+
+The application includes production-ready Docker configuration:
+
+- **Multi-stage build** for optimized image size
+- **Bun runtime** for better performance
+- **Health checks** for container monitoring
+- **Non-root user** for security
+- **Standalone Next.js output** for minimal dependencies
+
+### Environment Variables
+
+```bash
+NODE_ENV=production
+NEXT_TELEMETRY_DISABLED=1
+PORT=3000
+HOSTNAME=0.0.0.0
+```
 
 ## 🌟 Why WebP?
 
@@ -80,36 +120,40 @@ WebP is a modern image format that provides:
 
 ## 🚀 Deployment
 
-### Deploy to Vercel
-
-1. Push your code to GitHub
-2. Connect your repo to Vercel
-3. Deploy with one click!
+### Deploy with Docker
 
 ```bash
-npm run build
-npm start
+# Production build
+docker build -t image-to-webp .
+docker run -d -p 3000:3000 --name image-converter image-to-webp
 ```
 
-## 🤝 Contributing
+### Deploy to Cloud
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+The application is ready for deployment on:
+- **Vercel** (recommended for Next.js)
+- **Docker-based platforms** (Railway, Render, etc.)
+- **VPS with Docker**
+- **Kubernetes clusters**
 
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 🤝 Contributing
+
+This project is **not open for contributions**, but feel free to **fork the repository** and create your own version! If you found this useful, please consider starring the repo.
+
 ## 🙏 Acknowledgments
 
 - [Next.js](https://nextjs.org/) - The React framework
 - [Sharp](https://sharp.pixelplumbing.com/) - High performance image processing
-- [DaisyUI](https://daisyui.com/) - Beautiful component library
+- [Bun](https://bun.sh/) - Fast all-in-one JavaScript runtime
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 - [react-dropzone](https://react-dropzone.js.org/) - File upload components
 
 ---
 
 Made with ❤️ by [Revan Pratama](https://revanpratamas.com)
+
+*Available at [image-to-webp.revanpratamas.com](https://image-to-webp.revanpratamas.com)*
